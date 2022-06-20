@@ -1,42 +1,31 @@
 import { randomUUID } from 'crypto';
-
-enum CarType {
-	Conversible = 'Conversible',
-	Hatchback = 'Hatchback',
-	Fastback = 'Fastback',
-	SW = 'SW',
-	SUV = 'SUV',
-	Minivan = 'Minivan',
-	Pickup = 'Pickup',
-}
 export interface CarExpecification {
-	name: string;
 	model: string;
-	type: CarType;
+	type: string;
 	year: Date;
 	price: number;
 	kmTraveled: number;
+	color: string;
 }
 
 export default class Car {
-	private id;
-	private name;
+	id;
 	private model;
 	private type;
 	private year;
 	private price;
 	private kmTraveled;
+	private color;
 
 	constructor({
-		name,
 		model,
 		type,
 		year,
 		price,
 		kmTraveled = 0,
+		color,
 	}: CarExpecification) {
 		this.id = randomUUID();
-		this.name = name;
 		this.model = model;
 		this.type = type;
 		this.year = new Date(year).toISOString();
@@ -45,5 +34,6 @@ export default class Car {
 			currency: 'USD',
 		}).format(price);
 		this.kmTraveled = kmTraveled;
+		this.color = color;
 	}
 }

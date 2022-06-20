@@ -4,32 +4,21 @@ export const typeDefs = gql`
 	scalar Date
 	type Car {
 		id: ID!
-		name: String!
 		model: String!
-		type: CarType!
+		type: String!
 		year: Date!
 		price: String!
 		kmTraveled: Int
 	}
 
-	enum CarType {
-		Conversible
-		Hatchback
-		Fastback
-		SW
-		SUV
-		Minivan
-		Pickup
-	}
-
 	type Query {
 		listAll: [Car]
+		get(id: String): Car
 	}
 
 	input CreateCar {
-		name: String!
 		model: String!
-		type: CarType!
+		type: String!
 		year: Date!
 		price: Int!
 		kmTraveled: Int
